@@ -35,10 +35,12 @@ public:
     friend int Truck::sp_greater(Car c);
 };
 
+
 int Truck::sp_greater(Car c)
 {
     return c.speed - speed;
 }
+
 
 int main()
 {
