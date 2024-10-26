@@ -3,10 +3,6 @@ using namespace std;
 
 // Forward declaration
 class Car;
-class Truck;
-
-template <typename T>
-int travel_time(const T &t);
 
 class Truck
 {
@@ -25,7 +21,8 @@ public:
 
     int sp_greater(Car c);
 
-    friend int travel_time<>(const Truck &t);
+    template <typename T>
+    friend int travel_time(T t);
 };
 
 class Car
@@ -45,7 +42,8 @@ public:
 
     friend int Truck::sp_greater(Car c);
 
-    friend int travel_time<>(const Car &c);
+    template <typename T>
+    friend int travel_time(T t);
 };
 
 int Truck::sp_greater(Car c)
@@ -54,7 +52,7 @@ int Truck::sp_greater(Car c)
 }
 
 template <typename T>
-int travel_time(const T &t)
+int travel_time(T t)
 {
     if (t.speed == 0)
         return -1; 
