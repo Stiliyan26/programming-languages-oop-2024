@@ -83,7 +83,6 @@ int main()
 {
     AlphabetStack alphStack1, alphStack2;
 
-    
     alphStack1.loadStack(0);
     cout << "Stack with lowercase letters: ";
     alphStack1.printStack(alphStack1.getAlphabetStack()); 
