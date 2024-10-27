@@ -1,9 +1,6 @@
-#ifndef ITEM_H
-#define ITEM_H
-
+#pragma once
 #include <string>
 #include <ctime>
-
 class Item {
 private:
     std::string contentType;
@@ -30,5 +27,3 @@ public:
     virtual void toString() const;
     virtual ~Item() = default;
 };
-
-#endif 

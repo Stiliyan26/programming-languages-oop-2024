@@ -1,6 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
-
+#pragma once
 #include "Item.h"
 #include <string>
 
@@ -21,4 +19,3 @@ public:
     void toString() const override;
 };
 
-#endif 
