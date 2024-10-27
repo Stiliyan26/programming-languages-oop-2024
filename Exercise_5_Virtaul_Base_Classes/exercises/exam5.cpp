@@ -1,5 +1,6 @@
 #include <cstring>
 #include <iostream>
+#include <vector>
 #include <array>
 
 using namespace std;
@@ -8,14 +9,17 @@ enum ZooLocs
 {
   ZOOANIMAL,
   BEAR,
-  PANDA
+  PANDA,
+  TIGER,
+  ELEPHANT
 };
 
-static std::array<std::string, 3> locTable = {
+static char *locTable[] = {
     "Whole zoo area",
     "North B1: brown area",
-    "East B1,P area"
-};
+    "East B1,P area",
+    "South T1: tiger area",
+    "African elephant: elephant area"};
 
 class ZooAnimal
 {
@@ -33,6 +37,32 @@ public:
 
 private:
   friend void print(ZooAnimal *);
+};
+
+class Tiger : public ZooAnimal
+{
+protected:
+  char *sciName;
+  ZooLocs ZooArea;
+
+public:
+  Tiger(char *s = "Tiger", ZooLocs loc = TIGER, char *sci = "Striped fur");
+  ~Tiger() { delete sciName; }
+  void print();
+  void isA();
+};
+
+class Elephant : public ZooAnimal
+{
+protected:
+  char *sciName;
+  ZooLocs ZooArea;
+
+public:
+  Elephant(char *s = "Elephant", ZooLocs loc = ELEPHANT, char *sci = "African elephant");
+  ~Elephant() { delete sciName; }
+  void print();
+  void isA();
 };
 
 class Bear : public ZooAnimal
@@ -73,7 +103,7 @@ ZooAnimal::ZooAnimal(char *s) : next(0)
 // za = Пантера
 // za -> next = next задава Тигър на za->next
 // next = za => сега next реферира съм za = Пантера, za-> next реферира към Tигър
-// По този начин вместваме Пантера преди Тигър  
+// По този начин вместваме Пантера преди Тигър
 void ZooAnimal::link(ZooAnimal *za)
 {
   za->next = next;
@@ -90,6 +120,7 @@ void ZooAnimal::print()
   isA();
 }
 
+// Bear
 Bear::Bear(char *s, ZooLocs loc, char *sci) : ZooAnimal(s), ZooArea(loc)
 {
   sciName = new char[strlen(sci) + 1];
@@ -136,17 +167,64 @@ void print(ZooAnimal *pz)
   }
 }
 
+// Tiger
+Tiger::Tiger(char *s, ZooLocs loc, char *sci)
+    : ZooAnimal(s), ZooArea(loc)
+{
+  sciName = new char[strlen(sci) + 1];
+  strcpy(sciName, sci);
+}
+
+void Tiger::isA()
+{
+  ZooAnimal::isA();
+  cout << "\tSname: \t" << sciName << '\n';
+}
+
+void Tiger::print()
+{
+  ZooAnimal::print();
+  cout << "\tAddress: \t" << locTable[ZooArea] << '\n';
+}
+
+
+// Elephant
+Elephant::Elephant(char *s, ZooLocs loc, char *sci)
+    : ZooAnimal(s), ZooArea(loc)
+{
+  sciName = new char[strlen(sci) + 1];
+  strcpy(sciName, sci);
+}
+
+void Elephant::isA()
+{
+  ZooAnimal::isA();
+  cout << "\tSname: \t" << sciName << '\n';
+}
+
+void Elephant::print()
+{
+  ZooAnimal::print();
+  cout << "\tAddress: \t" << locTable[ZooArea] << '\n';
+}
+
+
 ZooAnimal *headPtr = 0, circus("Circus animal");
 Bear yogi("Little bear", BEAR, "ursus cartoonus");
-Panda yinYang("Yin Yang", 1001, "Big Panda"),
-    rocky("Rocky", 943, "Red Panda", "Ailurus fulgena");
+Panda yinYang("Yin Yang", 1001, "Big Panda"), rocky("Rocky", 943, "Red Panda", "Ailurus fulgena");
+Tiger rajah("Rajah", TIGER, "Panthera tigers");
+Elephant kiro("Kiro", ELEPHANT, "Elephant africa");
 
 ZooAnimal *makelist(ZooAnimal *ptr)
 {
   ptr = &yinYang;
+
   ptr->link(&circus);
   ptr->link(&yogi);
   ptr->link(&rocky);
+  ptr->link(&rajah);
+  ptr->link(&kiro);
+
   return ptr;
 }
 

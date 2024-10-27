@@ -43,7 +43,7 @@ int main() {
     triangle t;      
 
     
-    r.setarea(3.3, 4.5);
+    r.setarea(20.3, 4.5);
     t.setarea(4.0, 5.0);
 
     

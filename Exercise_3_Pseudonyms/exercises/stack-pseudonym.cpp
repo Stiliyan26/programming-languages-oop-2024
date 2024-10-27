@@ -24,13 +24,11 @@ public:
         cout << "Initialize AlphabetStack\n";
     }
 
-    
-    stack<char>& getAlphabetStack() 
+    stack<char> &getAlphabetStack()
     {
-        return st; 
+        return st;
     }
 
-    
     void loadStack(int upper)
     {
         if (upper == 1)
@@ -43,11 +41,10 @@ public:
         }
     }
 
-    
-    void printStack(const stack<char>& inputStack)
+    void printStack(const stack<char> &inputStack)
     {
-        stack<char> temp = inputStack; 
-        
+        stack<char> temp = inputStack;
+
         while (!temp.empty())
         {
             cout << temp.top() << " ";
@@ -56,7 +53,6 @@ public:
         cout << endl;
     }
 
-    
     void printAndClearStackReversed()
     {
         vector<char> reversedStack;
@@ -67,7 +63,6 @@ public:
             st.pop();
         }
 
-        
         reverse(reversedStack.begin(), reversedStack.end());
 
         for (char c : reversedStack)
@@ -85,18 +80,17 @@ int main()
 
     alphStack1.loadStack(0);
     cout << "Stack with lowercase letters: ";
-    alphStack1.printStack(alphStack1.getAlphabetStack()); 
-    
-    cout << "Reversed stack with lowercase letters: ";
-    alphStack1.printAndClearStackReversed(); 
+    alphStack1.printStack(alphStack1.getAlphabetStack());
 
-    
+    cout << "Reversed stack with lowercase letters: ";
+    alphStack1.printAndClearStackReversed();
+
     alphStack2.loadStack(1);
     cout << "Stack with uppercase letters: ";
-    alphStack2.printStack(alphStack2.getAlphabetStack()); 
-    
+    alphStack2.printStack(alphStack2.getAlphabetStack());
+
     cout << "Reversed stack with uppercase letters: ";
-    alphStack2.printAndClearStackReversed(); 
+    alphStack2.printAndClearStackReversed();
 
     return 0;
 }
