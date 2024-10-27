@@ -3,34 +3,32 @@
 
 #include <string>
 #include <ctime>
-#include <iostream>
-
-using namespace std;
 
 class Item {
 private:
-    string contentType;
+    std::string contentType;
     tm datePurchased;
     int itemId;
-    string mediaFormat;
+    std::string mediaFormat;
     int numberOfItems;
     double price;
-    string title;
+    std::string title;
 
 public:
-    Item(string ct, tm dp, int iId, string mf, int noi, double p, string t);
-
-    string getContentType() const;
+    Item(std::string ct, tm dp, int iId, std::string mf, int noi, double p, std::string t);
+    
+    std::string getContentType() const;
     tm getDatePurchased() const;
     int getItemId() const;
-    string getMediaFormat() const;
+    std::string getMediaFormat() const;
     int getNumberOfItems() const;
     double getPrice() const;
-    string getTitle() const;
-
+    std::string getTitle() const;
+    
     void setItemId(int iId);
-
+    
     virtual void toString() const;
+    virtual ~Item() = default;
 };
 
-#endif // ITEM_H
+#endif 
