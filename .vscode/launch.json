@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/GitHub/programming-languages-oop-2024/Exercise_4_Inheritance/exercises/media",
-      "program": "c:/GitHub/programming-languages-oop-2024/Exercise_4_Inheritance/exercises/media/build/Debug/outDebug",
+      "cwd": "c:/GitHub/programming-languages-oop-2024/Exercise_6_Predefiend_Operations/examples",
+      "program": "c:/GitHub/programming-languages-oop-2024/Exercise_6_Predefiend_Operations/examples/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
