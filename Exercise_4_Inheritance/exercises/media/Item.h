@@ -1,7 +1,8 @@
-#pragma once
+#once
 #include <string>
 #include <ctime>
-class Item {
+class Item
+{
 private:
     std::string contentType;
     tm datePurchased;
@@ -13,7 +14,7 @@ private:
 
 public:
     Item(std::string ct, tm dp, int iId, std::string mf, int noi, double p, std::string t);
-    
+
     std::string getContentType() const;
     tm getDatePurchased() const;
     int getItemId() const;
@@ -21,9 +22,9 @@ public:
     int getNumberOfItems() const;
     double getPrice() const;
     std::string getTitle() const;
-    
+
     void setItemId(int iId);
-    
+
     virtual void toString() const;
     virtual ~Item() = default;
 };
